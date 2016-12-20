@@ -95,6 +95,11 @@ articleView.create = function() {
 
   $('#export-field').show();
   $('#article-json').val(JSON.stringify(formArticle) + ',');
+
+  $('#submit').on('click', function(event){
+    event.preventDefault();
+    articles.push(new Article);
+  });
 };
 
 $('#new-form').on('change', articleView.create);

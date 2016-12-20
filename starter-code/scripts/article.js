@@ -10,12 +10,14 @@ Article.prototype.toHtml = function(scriptTemplateId) {
   var renderTemplate = Handlebars.compile($(scriptTemplateId).html());
 
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
+  console.log(this.daysAgo);
   if(this.daysAgo < 1) {
     this.publishStatus = '(published today)';
   } else {
     this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
   }
   // TODO: Parse any markdown with marked!
+  this.body = marked(this.body);
 
   return renderTemplate(this);
 };

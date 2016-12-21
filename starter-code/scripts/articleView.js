@@ -3,11 +3,11 @@ var articleView = {};
 
 articleView.render = function() {
   articles.forEach(function(a) {
-    $('#articles').append(a.toHtml('#article-template'));
-    $('#author-filter').append(a.toHtml('#author-filter-template'));
-    if($('#category-filter option:contains("'+ a.category + '")').length === 0) {
-      $('#category-filter').append(a.toHtml('#category-filter-template'));
-    };
+    // $('#articles').append(a.toHtml('#article-template'));
+    // $('#author-filter').append(a.toHtml('#author-filter-template'));
+    // if($('#category-filter option:contains("'+ a.category + '")').length === 0) {
+    //   $('#category-filter').append(a.toHtml('#category-filter-template'));
+    // }; // need to copy handlebar scripts from index.html to new.html or vice versa
   });
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
@@ -65,8 +65,40 @@ articleView.setTeasers = function() {
   });
 };
 
+articleView.initNewArticlePage = function() {
+  $('.tab-content').show();
+  $('#export-field').hide();
+  $('#article-json').on('click', function () {
+    $(this).select();
+  });
+  $('#new-form').on('change', articleView.create);
+};
+
+articleView.create = function() {
+  // clear out article preview
+  $('#article-preview').empty();
+  // make new article object
+  var formArticle = new Article({
+    title: $('#article-title').val(),
+    author: $('#article-author').val(),
+    authorUrl: $('#article-author-url').val(),
+    body: $('#article-body').val(),
+    publishedOn: $('#article-published:checked').length ? new Date() : null
+  });
+  console.log('formArticle: ', formArticle);
+  $('#article-preview').append(formArticle.toHtml('#article-template'));
+
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  $('#export-field').show();
+  $('#article-json').val(JSON.stringify(formArticle) + ',');
+};
+
 articleView.render();
 articleView.handleCategoryFilter();
 articleView.handleAuthorFilter();
 articleView.handleMainNav();
 articleView.setTeasers();
+articleView.initNewArticlePage();

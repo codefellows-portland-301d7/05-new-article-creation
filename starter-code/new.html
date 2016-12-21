@@ -40,14 +40,31 @@
         <div class="icon-menu"></div>
         <ul>
           <li class="tab" data-content="write"><a href="#" class="icon-home"> Write</a></li>
-          <li class="tab" data-content="articles"><a href="#" class="icon-home"> Preview</a></li>
+          <li class="tab" data-content="article-preview"><a href="#" class="icon-home"> Preview</a></li>
         </ul>
       </nav>
     </header>
     <main class="clearfix">
       <section id="write" class="tab-content">
         <h1>New Article</h1>
-        <!-- TODO: Set up a form to accept user input for a new blog article: -->
+    <form class="" id="new-form" action="index.html" method="post">
+      <label for="">
+        <input type="text" name="" id="article-title" value="" placeholder="Article Title" required>
+      </label>
+      <textarea name="name" id="article-body" rows="8" cols="40" required></textarea>
+      <label for="">
+        <input type="text" name="" id="article-author" value="" placeholder="Author Name" required>
+      </label>
+      <label for="">
+        <input type="text" name="" id="article-author-url" value="" placeholder="Author's URL" required>
+      </label>
+      <label for="">
+        <input type="text" name="" id="article-category" value="" placeholder="Catgory" required>
+      </label>
+      <label for="">
+        <input type="checkbox" name="" id="article-published" value="" required >Published
+      </label>
+    </form>
 
       </section>
       <section id="article-preview" class="tab-content"></section>
@@ -64,10 +81,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <!-- DONE: Include script tags for 3rd party libraries to enable markdown rendering and code syntax highlighting -->
-    <script src="/vendor/scripts/marked.js"></script>
-    <script src="/vendor/scripts/highlight.pack.js"></script>
-    <script src="/scripts/blogArticles.js"></script>
-    <script src="/scripts/article.js"></script>
-    <script src="/scripts/articleView.js"></script>
+    <script src="vendor/scripts/marked.js"></script>
+    <script src="vendor/scripts/highlight.pack.js"></script>
+    <script src="scripts/blogArticles.js"></script>
+    <script src="scripts/article.js"></script>
+    <script src="scripts/articleView.js"></script>
   </body>
 </html>

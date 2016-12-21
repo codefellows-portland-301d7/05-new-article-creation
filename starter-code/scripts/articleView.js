@@ -99,7 +99,7 @@ articleView.create = function() {
   $('#submit').on('click', function(event){
     event.preventDefault();
     articles.push(new Article);
-  });
+  }); //this is some home-brew code for attempting to add new Articles to our articles set
 };
 
 $('#new-form').on('change', articleView.create);
